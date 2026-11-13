@@ -55,3 +55,6 @@ CodeCoverage/
 *.VisualState.xml
 TestResult.xml
 nunit-*.xml
+*.v2
+*.vsidx
+/.vs/S.A_Esquadrias.slnx/FileContentIndex/58683162-a3ae-4032-9075-52c475903f8e.vsidx
