@@ -1,7 +1,64 @@
 {
   "Version": 1,
   "WorkspaceRootPath": "C:\\Users\\48966750885\\source\\repos\\S.A_Esquadrias\\",
-  "Documents": [],
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{937CFC42-B9E3-44D0-B972-6D9FC72D20A0}|S.A_Esquadrias.csproj|c:\\users\\48966750885\\source\\repos\\s.a_esquadrias\\controllers\\fotoinstalacaocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{937CFC42-B9E3-44D0-B972-6D9FC72D20A0}|S.A_Esquadrias.csproj|solutionrelative:controllers\\fotoinstalacaocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{937CFC42-B9E3-44D0-B972-6D9FC72D20A0}|S.A_Esquadrias.csproj|c:\\users\\48966750885\\source\\repos\\s.a_esquadrias\\controllers\\registroinstalacaocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{937CFC42-B9E3-44D0-B972-6D9FC72D20A0}|S.A_Esquadrias.csproj|solutionrelative:controllers\\registroinstalacaocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{937CFC42-B9E3-44D0-B972-6D9FC72D20A0}|S.A_Esquadrias.csproj|c:\\users\\48966750885\\source\\repos\\s.a_esquadrias\\controllers\\instalacaocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{937CFC42-B9E3-44D0-B972-6D9FC72D20A0}|S.A_Esquadrias.csproj|solutionrelative:controllers\\instalacaocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{937CFC42-B9E3-44D0-B972-6D9FC72D20A0}|S.A_Esquadrias.csproj|c:\\users\\48966750885\\source\\repos\\s.a_esquadrias\\controllers\\medicaocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{937CFC42-B9E3-44D0-B972-6D9FC72D20A0}|S.A_Esquadrias.csproj|solutionrelative:controllers\\medicaocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{937CFC42-B9E3-44D0-B972-6D9FC72D20A0}|S.A_Esquadrias.csproj|c:\\users\\48966750885\\source\\repos\\s.a_esquadrias\\controllers\\obracontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{937CFC42-B9E3-44D0-B972-6D9FC72D20A0}|S.A_Esquadrias.csproj|solutionrelative:controllers\\obracontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{937CFC42-B9E3-44D0-B972-6D9FC72D20A0}|S.A_Esquadrias.csproj|c:\\users\\48966750885\\source\\repos\\s.a_esquadrias\\controllers\\clientecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{937CFC42-B9E3-44D0-B972-6D9FC72D20A0}|S.A_Esquadrias.csproj|solutionrelative:controllers\\clientecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{937CFC42-B9E3-44D0-B972-6D9FC72D20A0}|S.A_Esquadrias.csproj|c:\\users\\48966750885\\source\\repos\\s.a_esquadrias\\controllers\\usuariocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{937CFC42-B9E3-44D0-B972-6D9FC72D20A0}|S.A_Esquadrias.csproj|solutionrelative:controllers\\usuariocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{937CFC42-B9E3-44D0-B972-6D9FC72D20A0}|S.A_Esquadrias.csproj|c:\\users\\48966750885\\source\\repos\\s.a_esquadrias\\models\\cliente.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{937CFC42-B9E3-44D0-B972-6D9FC72D20A0}|S.A_Esquadrias.csproj|solutionrelative:models\\cliente.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{937CFC42-B9E3-44D0-B972-6D9FC72D20A0}|S.A_Esquadrias.csproj|c:\\users\\48966750885\\source\\repos\\s.a_esquadrias\\models\\usuario.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{937CFC42-B9E3-44D0-B972-6D9FC72D20A0}|S.A_Esquadrias.csproj|solutionrelative:models\\usuario.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{937CFC42-B9E3-44D0-B972-6D9FC72D20A0}|S.A_Esquadrias.csproj|c:\\users\\48966750885\\source\\repos\\s.a_esquadrias\\models\\registroinstalacao.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{937CFC42-B9E3-44D0-B972-6D9FC72D20A0}|S.A_Esquadrias.csproj|solutionrelative:models\\registroinstalacao.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{937CFC42-B9E3-44D0-B972-6D9FC72D20A0}|S.A_Esquadrias.csproj|c:\\users\\48966750885\\source\\repos\\s.a_esquadrias\\models\\obra.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{937CFC42-B9E3-44D0-B972-6D9FC72D20A0}|S.A_Esquadrias.csproj|solutionrelative:models\\obra.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{937CFC42-B9E3-44D0-B972-6D9FC72D20A0}|S.A_Esquadrias.csproj|c:\\users\\48966750885\\source\\repos\\s.a_esquadrias\\models\\medicao.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{937CFC42-B9E3-44D0-B972-6D9FC72D20A0}|S.A_Esquadrias.csproj|solutionrelative:models\\medicao.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{937CFC42-B9E3-44D0-B972-6D9FC72D20A0}|S.A_Esquadrias.csproj|c:\\users\\48966750885\\source\\repos\\s.a_esquadrias\\models\\instalacao.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{937CFC42-B9E3-44D0-B972-6D9FC72D20A0}|S.A_Esquadrias.csproj|solutionrelative:models\\instalacao.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{937CFC42-B9E3-44D0-B972-6D9FC72D20A0}|S.A_Esquadrias.csproj|c:\\users\\48966750885\\source\\repos\\s.a_esquadrias\\models\\fotoinstalacao.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{937CFC42-B9E3-44D0-B972-6D9FC72D20A0}|S.A_Esquadrias.csproj|solutionrelative:models\\fotoinstalacao.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
@@ -9,11 +66,193 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": -1,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "FotoInstalacaoController.cs",
+              "DocumentMoniker": "C:\\Users\\48966750885\\source\\repos\\S.A_Esquadrias\\Controllers\\FotoInstalacaoController.cs",
+              "RelativeDocumentMoniker": "Controllers\\FotoInstalacaoController.cs",
+              "ToolTip": "C:\\Users\\48966750885\\source\\repos\\S.A_Esquadrias\\Controllers\\FotoInstalacaoController.cs",
+              "RelativeToolTip": "Controllers\\FotoInstalacaoController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-11-13T11:19:42.994Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "RegistroInstalacaoController.cs",
+              "DocumentMoniker": "C:\\Users\\48966750885\\source\\repos\\S.A_Esquadrias\\Controllers\\RegistroInstalacaoController.cs",
+              "RelativeDocumentMoniker": "Controllers\\RegistroInstalacaoController.cs",
+              "ToolTip": "C:\\Users\\48966750885\\source\\repos\\S.A_Esquadrias\\Controllers\\RegistroInstalacaoController.cs",
+              "RelativeToolTip": "Controllers\\RegistroInstalacaoController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-11-13T11:19:24.845Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "InstalacaoController.cs",
+              "DocumentMoniker": "C:\\Users\\48966750885\\source\\repos\\S.A_Esquadrias\\Controllers\\InstalacaoController.cs",
+              "RelativeDocumentMoniker": "Controllers\\InstalacaoController.cs",
+              "ToolTip": "C:\\Users\\48966750885\\source\\repos\\S.A_Esquadrias\\Controllers\\InstalacaoController.cs",
+              "RelativeToolTip": "Controllers\\InstalacaoController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-11-13T11:19:01.844Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "MedicaoController.cs",
+              "DocumentMoniker": "C:\\Users\\48966750885\\source\\repos\\S.A_Esquadrias\\Controllers\\MedicaoController.cs",
+              "RelativeDocumentMoniker": "Controllers\\MedicaoController.cs",
+              "ToolTip": "C:\\Users\\48966750885\\source\\repos\\S.A_Esquadrias\\Controllers\\MedicaoController.cs",
+              "RelativeToolTip": "Controllers\\MedicaoController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-11-13T11:18:43.593Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "ObraController.cs",
+              "DocumentMoniker": "C:\\Users\\48966750885\\source\\repos\\S.A_Esquadrias\\Controllers\\ObraController.cs",
+              "RelativeDocumentMoniker": "Controllers\\ObraController.cs",
+              "ToolTip": "C:\\Users\\48966750885\\source\\repos\\S.A_Esquadrias\\Controllers\\ObraController.cs",
+              "RelativeToolTip": "Controllers\\ObraController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-11-13T11:18:27.71Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "ClienteController.cs",
+              "DocumentMoniker": "C:\\Users\\48966750885\\source\\repos\\S.A_Esquadrias\\Controllers\\ClienteController.cs",
+              "RelativeDocumentMoniker": "Controllers\\ClienteController.cs",
+              "ToolTip": "C:\\Users\\48966750885\\source\\repos\\S.A_Esquadrias\\Controllers\\ClienteController.cs",
+              "RelativeToolTip": "Controllers\\ClienteController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-11-13T11:18:13.022Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "UsuarioController.cs",
+              "DocumentMoniker": "C:\\Users\\48966750885\\source\\repos\\S.A_Esquadrias\\Controllers\\UsuarioController.cs",
+              "RelativeDocumentMoniker": "Controllers\\UsuarioController.cs",
+              "ToolTip": "C:\\Users\\48966750885\\source\\repos\\S.A_Esquadrias\\Controllers\\UsuarioController.cs",
+              "RelativeToolTip": "Controllers\\UsuarioController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-11-13T11:17:31.286Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "FotoInstalacao.cs",
+              "DocumentMoniker": "C:\\Users\\48966750885\\source\\repos\\S.A_Esquadrias\\Models\\FotoInstalacao.cs",
+              "RelativeDocumentMoniker": "Models\\FotoInstalacao.cs",
+              "ToolTip": "C:\\Users\\48966750885\\source\\repos\\S.A_Esquadrias\\Models\\FotoInstalacao.cs",
+              "RelativeToolTip": "Models\\FotoInstalacao.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAABCAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-11-13T11:02:38.856Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "RegistroInstalacao.cs",
+              "DocumentMoniker": "C:\\Users\\48966750885\\source\\repos\\S.A_Esquadrias\\Models\\RegistroInstalacao.cs",
+              "RelativeDocumentMoniker": "Models\\RegistroInstalacao.cs",
+              "ToolTip": "C:\\Users\\48966750885\\source\\repos\\S.A_Esquadrias\\Models\\RegistroInstalacao.cs",
+              "RelativeToolTip": "Models\\RegistroInstalacao.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAA+AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-11-13T11:02:21.872Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "Instalacao.cs",
+              "DocumentMoniker": "C:\\Users\\48966750885\\source\\repos\\S.A_Esquadrias\\Models\\Instalacao.cs",
+              "RelativeDocumentMoniker": "Models\\Instalacao.cs",
+              "ToolTip": "C:\\Users\\48966750885\\source\\repos\\S.A_Esquadrias\\Models\\Instalacao.cs",
+              "RelativeToolTip": "Models\\Instalacao.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAABGAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-11-13T11:02:04.89Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "Medicao.cs",
+              "DocumentMoniker": "C:\\Users\\48966750885\\source\\repos\\S.A_Esquadrias\\Models\\Medicao.cs",
+              "RelativeDocumentMoniker": "Models\\Medicao.cs",
+              "ToolTip": "C:\\Users\\48966750885\\source\\repos\\S.A_Esquadrias\\Models\\Medicao.cs",
+              "RelativeToolTip": "Models\\Medicao.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAAVAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-11-13T10:59:15.755Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "Obra.cs",
+              "DocumentMoniker": "C:\\Users\\48966750885\\source\\repos\\S.A_Esquadrias\\Models\\Obra.cs",
+              "RelativeDocumentMoniker": "Models\\Obra.cs",
+              "ToolTip": "C:\\Users\\48966750885\\source\\repos\\S.A_Esquadrias\\Models\\Obra.cs",
+              "RelativeToolTip": "Models\\Obra.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAuAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-11-13T10:59:05.653Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "Cliente.cs",
+              "DocumentMoniker": "C:\\Users\\48966750885\\source\\repos\\S.A_Esquadrias\\Models\\Cliente.cs",
+              "RelativeDocumentMoniker": "Models\\Cliente.cs",
+              "ToolTip": "C:\\Users\\48966750885\\source\\repos\\S.A_Esquadrias\\Models\\Cliente.cs",
+              "RelativeToolTip": "Models\\Cliente.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAA4AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-11-13T10:58:56.765Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "Usuario.cs",
+              "DocumentMoniker": "C:\\Users\\48966750885\\source\\repos\\S.A_Esquadrias\\Models\\Usuario.cs",
+              "RelativeDocumentMoniker": "Models\\Usuario.cs",
+              "ToolTip": "C:\\Users\\48966750885\\source\\repos\\S.A_Esquadrias\\Models\\Usuario.cs",
+              "RelativeToolTip": "Models\\Usuario.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAqAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-11-13T10:58:36.934Z",
+              "EditorCaption": ""
             }
           ]
         }
