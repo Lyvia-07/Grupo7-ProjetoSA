@@ -6,7 +6,7 @@ namespace S.A_Esquadrias.Controllers
     {
         public IActionResult Index()
         {
-            return View();
+            return View(); 
         }
     }
 }
