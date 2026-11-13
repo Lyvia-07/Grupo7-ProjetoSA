@@ -1,0 +1,6 @@
+@S.A_Esquadrias_HostAddress = http://localhost:5082
+
+GET {{S.A_Esquadrias_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
