@@ -56,3 +56,4 @@ CodeCoverage/
 TestResult.xml
 nunit-*.xml
 *.vsidx
+/.vs/S.A_Esquadrias.slnx/DesignTimeBuild/.dtbcache.v2
