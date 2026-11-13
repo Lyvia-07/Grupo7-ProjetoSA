@@ -5,12 +5,14 @@ using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi;
 using S.A_Esquadrias.Data;
 using System.Text;
+using System.Security.Claims;
 
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
+// CORS
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("Vue", policy =>
@@ -21,7 +23,7 @@ builder.Services.AddCors(options =>
     });
 });
 
-
+// AUTENTICAÇÃO JWT
 builder.Services.AddAuthentication(options =>
 {
     options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
@@ -35,12 +37,20 @@ builder.Services.AddAuthentication(options =>
         ValidateAudience = true,
         ValidateLifetime = true,
         ValidateIssuerSigningKey = true,
+
         ValidIssuer = builder.Configuration["Jwt:Issuer"],
         ValidAudience = builder.Configuration["Jwt:Audience"],
+
         IssuerSigningKey = new SymmetricSecurityKey(
-            Encoding.UTF8.GetBytes(builder.Configuration["Jwt:Key"]))
+            Encoding.UTF8.GetBytes(builder.Configuration["Jwt:Key"]!)
+        ),
+
+        RoleClaimType = ClaimTypes.Role
     };
 });
+
+
+builder.Services.AddAuthorization();
 
 
 builder.Services.AddSwaggerGen(c =>

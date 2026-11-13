@@ -1,12 +1,15 @@
 ﻿
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Authorization;
 using S.A_Esquadrias.Data;
 using S.A_Esquadrias.DTOs;
 using S.A_Esquadrias.Models;
+using System.Security.Claims;
 
 namespace S.A_Esquadrias.Controllers
 {
+    [Authorize]
     [ApiController]
     [Route("api/[controller]")]
     public class FotoInstalacaoController : ControllerBase
@@ -19,9 +22,26 @@ namespace S.A_Esquadrias.Controllers
         }
 
         [HttpGet]
+        [Authorize(Roles = "ADM,Montador")]
         public async Task<ActionResult<IEnumerable<FotoInstalacaoDTO>>> GetFotos()
         {
-            return await _context.FotoInstalacao
+            var fotos = _context.FotoInstalacao
+                .Include(f => f.RegistroInstalacao)
+                .ThenInclude(r => r.Instalacao)
+                .AsQueryable();
+
+            if (User.IsInRole("Montador"))
+            {
+                var idMontador = int.Parse(
+                    User.FindFirstValue(ClaimTypes.NameIdentifier)!
+                );
+
+                fotos = fotos.Where(
+                    f => f.RegistroInstalacao.Instalacao.IdMontador == idMontador
+                );
+            }
+
+            var resultado = await fotos
                 .Select(f => new FotoInstalacaoDTO
                 {
                     Id = f.Id,
@@ -30,38 +50,73 @@ namespace S.A_Esquadrias.Controllers
                     DataEnvio = f.DataEnvio
                 })
                 .ToListAsync();
+
+            return Ok(resultado);
         }
 
-       
         [HttpGet("{id}")]
+        [Authorize(Roles = "ADM,Montador")]
         public async Task<ActionResult<FotoInstalacaoDTO>> GetFoto(int id)
         {
-            var foto = await _context.FotoInstalacao.FindAsync(id);
+            var foto = _context.FotoInstalacao
+                .Include(f => f.RegistroInstalacao)
+                .ThenInclude(r => r.Instalacao)
+                .AsQueryable();
 
-            if (foto == null)
+            if (User.IsInRole("Montador"))
             {
-                return NotFound();
+                var idMontador = int.Parse(
+                    User.FindFirstValue(ClaimTypes.NameIdentifier)!
+                );
+
+                foto = foto.Where(
+                    f => f.RegistroInstalacao.Instalacao.IdMontador == idMontador
+                );
             }
 
-            return new FotoInstalacaoDTO
+            var resultado = await foto
+                .Where(f => f.Id == id)
+                .Select(f => new FotoInstalacaoDTO
+                {
+                    Id = f.Id,
+                    IdRegistro = f.IdRegistro,
+                    CaminhoArquivo = f.CaminhoArquivo,
+                    DataEnvio = f.DataEnvio
+                })
+                .FirstOrDefaultAsync();
+
+            if (resultado == null)
             {
-                Id = foto.Id,
-                IdRegistro = foto.IdRegistro,
-                CaminhoArquivo = foto.CaminhoArquivo,
-                DataEnvio = foto.DataEnvio
-            };
+                return NotFound("Foto não encontrada.");
+            }
+
+            return Ok(resultado);
         }
 
         [HttpPost]
+        [Authorize(Roles = "ADM,Montador")]
         public async Task<ActionResult<FotoInstalacaoDTO>> CreateFoto(
-            FotoInstalacaoDTO fotoDto)
+            CriarFotoInstalacaoDTO fotoDto)
         {
-            var registroExiste = await _context.RegistroInstalacao
-                .AnyAsync(r => r.Id == fotoDto.IdRegistro);
+            var registro = await _context.RegistroInstalacao
+                .Include(r => r.Instalacao)
+                .FirstOrDefaultAsync(r => r.Id == fotoDto.IdRegistro);
 
-            if (!registroExiste)
+            if (registro == null)
             {
-                return BadRequest("Esse Registro de instalação não foi encontrado.");
+                return BadRequest("Esse registro de instalação não foi encontrado.");
+            }
+
+            if (User.IsInRole("Montador"))
+            {
+                var idMontador = int.Parse(
+                    User.FindFirstValue(ClaimTypes.NameIdentifier)!
+                );
+
+                if (registro.Instalacao.IdMontador != idMontador)
+                {
+                    return Forbid();
+                }
             }
 
             var foto = new FotoInstalacao
@@ -75,24 +130,30 @@ namespace S.A_Esquadrias.Controllers
 
             await _context.SaveChangesAsync();
 
-            fotoDto.Id = foto.Id;
-            fotoDto.DataEnvio = foto.DataEnvio;
+            var resposta = new FotoInstalacaoDTO
+            {
+                Id = foto.Id,
+                IdRegistro = foto.IdRegistro,
+                CaminhoArquivo = foto.CaminhoArquivo,
+                DataEnvio = foto.DataEnvio
+            };
 
             return CreatedAtAction(
                 nameof(GetFoto),
                 new { id = foto.Id },
-                fotoDto
+                resposta
             );
         }
 
         [HttpDelete("{id}")]
+        [Authorize(Roles = "ADM")]
         public async Task<IActionResult> DeleteFoto(int id)
         {
             var foto = await _context.FotoInstalacao.FindAsync(id);
 
             if (foto == null)
             {
-                return NotFound();
+                return NotFound("Foto não encontrada.");
             }
 
             _context.FotoInstalacao.Remove(foto);
