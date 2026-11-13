@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using S.A_Esquadrias.Data;
+using S.A_Esquadrias.DTOs;
 using S.A_Esquadrias.Models;
 
 namespace S.A_Esquadrias.Controllers
@@ -17,10 +18,10 @@ namespace S.A_Esquadrias.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<InstalacaoDto>>> GetInstalacoes()
+        public async Task<ActionResult<IEnumerable<InstalacaoDTO>>> GetInstalacoes()
         {
-            return await _context.Instalacoes
-                .Select(i => new InstalacaoDto
+            return await _context.Instalacao
+                .Select(i => new InstalacaoDTO
                 {
                     Id = i.Id,
                     IdObra = i.IdObra,
@@ -32,16 +33,16 @@ namespace S.A_Esquadrias.Controllers
         }
 
         [HttpGet("{id}")]
-        public async Task<ActionResult<InstalacaoDto>> GetInstalacao(int id)
+        public async Task<ActionResult<InstalacaoDTO>> GetInstalacao(int id)
         {
-            var instalacao = await _context.Instalacoes.FindAsync(id);
+            var instalacao = await _context.Instalacao.FindAsync(id);
 
             if (instalacao == null)
             {
                 return NotFound();
             }
 
-            return new InstalacaoDto
+            return new InstalacaoDTO
             {
                 Id = instalacao.Id,
                 IdObra = instalacao.IdObra,
@@ -52,10 +53,10 @@ namespace S.A_Esquadrias.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult<InstalacaoDto>> CreateInstalacao(
-            InstalacaoDto instalacaoDto)
+        public async Task<ActionResult<InstalacaoDTO>> CreateInstalacao(
+            InstalacaoDTO instalacaoDto)
         {
-            var obraExiste = await _context.Obras
+            var obraExiste = await _context.Obra
                 .AnyAsync(o => o.Id == instalacaoDto.IdObra);
 
             if (!obraExiste)
@@ -63,7 +64,7 @@ namespace S.A_Esquadrias.Controllers
                 return BadRequest("Obra não encontrada.");
             }
 
-            var montadorExiste = await _context.Usuarios
+            var montadorExiste = await _context.Usuario
                 .AnyAsync(u => u.Id == instalacaoDto.IdMontador);
 
             if (!montadorExiste)
@@ -79,7 +80,7 @@ namespace S.A_Esquadrias.Controllers
                 DataTermino = instalacaoDto.DataTermino
             };
 
-            _context.Instalacoes.Add(instalacao);
+            _context.Instalacao.Add(instalacao);
 
             await _context.SaveChangesAsync();
 
@@ -94,16 +95,16 @@ namespace S.A_Esquadrias.Controllers
 
         [HttpPut("{id}")]
         public async Task<IActionResult> UpdateInstalacao(
-            int id, InstalacaoDto instalacaoDto)
+            int id, InstalacaoDTO instalacaoDto)
         {
-            var instalacao = await _context.Instalacoes.FindAsync(id);
+            var instalacao = await _context.Instalacao.FindAsync(id);
 
             if (instalacao == null)
             {
                 return NotFound();
             }
 
-            var obraExiste = await _context.Obras
+            var obraExiste = await _context.Obra
                 .AnyAsync(o => o.Id == instalacaoDto.IdObra);
 
             if (!obraExiste)
@@ -111,7 +112,7 @@ namespace S.A_Esquadrias.Controllers
                 return BadRequest("Obra não encontrada.");
             }
 
-            var montadorExiste = await _context.Usuarios
+            var montadorExiste = await _context.Usuario
                 .AnyAsync(u => u.Id == instalacaoDto.IdMontador);
 
             if (!montadorExiste)
@@ -132,14 +133,14 @@ namespace S.A_Esquadrias.Controllers
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteInstalacao(int id)
         {
-            var instalacao = await _context.Instalacoes.FindAsync(id);
+            var instalacao = await _context.Instalacao.FindAsync(id);
 
             if (instalacao == null)
             {
                 return NotFound();
             }
 
-            _context.Instalacoes.Remove(instalacao);
+            _context.Instalacao.Remove(instalacao);
 
             await _context.SaveChangesAsync();
 

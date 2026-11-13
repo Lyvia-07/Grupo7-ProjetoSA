@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using S.A_Esquadrias.Data;
 using S.A_Esquadrias.Models;
 
 namespace S.A_Esquadrias.Controllers
@@ -19,7 +20,7 @@ namespace S.A_Esquadrias.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Cliente>>> GetClientes()
         {
-            var clientes = await _context.Clientes
+            var clientes = await _context.Cliente
                 .Include(c => c.Obras)
                 .ToListAsync();
 
@@ -29,7 +30,7 @@ namespace S.A_Esquadrias.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult<Cliente>> GetCliente(int id)
         {
-            var cliente = await _context.Clientes
+            var cliente = await _context.Cliente
                 .Include(c => c.Obras)
                 .FirstOrDefaultAsync(c => c.Id == id);
 
@@ -44,7 +45,7 @@ namespace S.A_Esquadrias.Controllers
         [HttpPost]
         public async Task<ActionResult<Cliente>> PostCliente(Cliente cliente)
         {
-            _context.Clientes.Add(cliente);
+            _context.Cliente.Add(cliente);
 
             await _context.SaveChangesAsync();
 
@@ -63,7 +64,7 @@ namespace S.A_Esquadrias.Controllers
                 return BadRequest("ID inválido.");
             }
 
-            var clienteExistente = await _context.Clientes
+            var clienteExistente = await _context.Cliente
                 .FindAsync(id);
 
             if (clienteExistente == null)
@@ -85,7 +86,7 @@ namespace S.A_Esquadrias.Controllers
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteCliente(int id)
         {
-            var cliente = await _context.Clientes
+            var cliente = await _context.Cliente
                 .FindAsync(id);
 
             if (cliente == null)
@@ -93,7 +94,7 @@ namespace S.A_Esquadrias.Controllers
                 return NotFound("Cliente não encontrado.");
             }
 
-            _context.Clientes.Remove(cliente);
+            _context.Cliente.Remove(cliente);
 
             await _context.SaveChangesAsync();
 

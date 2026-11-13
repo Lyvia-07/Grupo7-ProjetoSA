@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using S.A_Esquadrias.Data;
+using S.A_Esquadrias.DTOs;
 using S.A_Esquadrias.Models;
 
 namespace S.A_Esquadrias.Controllers
@@ -18,10 +19,10 @@ namespace S.A_Esquadrias.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<FotoInstalacaoDto>>> GetFotos()
+        public async Task<ActionResult<IEnumerable<FotoInstalacaoDTO>>> GetFotos()
         {
-            return await _context.FotosInstalacao
-                .Select(f => new FotoInstalacaoDto
+            return await _context.FotoInstalacao
+                .Select(f => new FotoInstalacaoDTO
                 {
                     Id = f.Id,
                     IdRegistro = f.IdRegistro,
@@ -33,16 +34,16 @@ namespace S.A_Esquadrias.Controllers
 
        
         [HttpGet("{id}")]
-        public async Task<ActionResult<FotoInstalacaoDto>> GetFoto(int id)
+        public async Task<ActionResult<FotoInstalacaoDTO>> GetFoto(int id)
         {
-            var foto = await _context.FotosInstalacao.FindAsync(id);
+            var foto = await _context.FotoInstalacao.FindAsync(id);
 
             if (foto == null)
             {
                 return NotFound();
             }
 
-            return new FotoInstalacaoDto
+            return new FotoInstalacaoDTO
             {
                 Id = foto.Id,
                 IdRegistro = foto.IdRegistro,
@@ -52,10 +53,10 @@ namespace S.A_Esquadrias.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult<FotoInstalacaoDto>> CreateFoto(
-            FotoInstalacaoDto fotoDto)
+        public async Task<ActionResult<FotoInstalacaoDTO>> CreateFoto(
+            FotoInstalacaoDTO fotoDto)
         {
-            var registroExiste = await _context.RegistrosInstalacao
+            var registroExiste = await _context.RegistroInstalacao
                 .AnyAsync(r => r.Id == fotoDto.IdRegistro);
 
             if (!registroExiste)
@@ -70,7 +71,7 @@ namespace S.A_Esquadrias.Controllers
                 DataEnvio = DateTime.Now
             };
 
-            _context.FotosInstalacao.Add(foto);
+            _context.FotoInstalacao.Add(foto);
 
             await _context.SaveChangesAsync();
 
@@ -87,14 +88,14 @@ namespace S.A_Esquadrias.Controllers
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteFoto(int id)
         {
-            var foto = await _context.FotosInstalacao.FindAsync(id);
+            var foto = await _context.FotoInstalacao.FindAsync(id);
 
             if (foto == null)
             {
                 return NotFound();
             }
 
-            _context.FotosInstalacao.Remove(foto);
+            _context.FotoInstalacao.Remove(foto);
 
             await _context.SaveChangesAsync();
 
