@@ -2,9 +2,9 @@
 {
     public class ClienteDTO
     {
-        public string NomeCompleto { get; set; }
+        public string Nome { get; set; }
         public string Email { get; set; }
         public string Telefone { get; set; }
-        public string CEP { get; set; }
+        public string Cep { get; set; }
     }
 }

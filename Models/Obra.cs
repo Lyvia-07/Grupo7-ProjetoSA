@@ -1,4 +1,6 @@
-﻿namespace S.A_Esquadrias.Models
+﻿using System.Text.Json.Serialization;
+
+namespace S.A_Esquadrias.Models
 {
     public class Obra
     {
@@ -10,7 +12,10 @@
         public string Endereco { get; set; }
         public string? ObsGerais { get; set; }
 
+        [JsonIgnore]
         public Cliente Cliente { get; set; }
+
+        [JsonIgnore]
         public Usuario Vendedor { get; set; }
 
         public ICollection<Medicao> Medicoes { get; set; }

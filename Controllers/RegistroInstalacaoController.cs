@@ -1,10 +1,15 @@
 ﻿
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Authorization;
+using S.A_Esquadrias.Data;
 using S.A_Esquadrias.Models;
+using S.A_Esquadrias.DTOs;
+using System.Security.Claims;
 
 namespace S.A_Esquadrias.Controllers
 {
+    [Authorize]
     [ApiController]
     [Route("api/[controller]")]
     public class RegistroInstalacaoController : ControllerBase
@@ -17,36 +22,96 @@ namespace S.A_Esquadrias.Controllers
         }
 
         [HttpGet]
+        [Authorize(Roles = "ADM,Montador")]
         public async Task<ActionResult<IEnumerable<RegistroInstalacao>>> GetRegistros()
         {
-            var registros = await _context.RegistrosInstalacao
+            var registros = _context.RegistroInstalacao
                 .Include(r => r.Instalacao)
                 .Include(r => r.Fotos)
-                .ToListAsync();
+                .AsQueryable();
 
-            return Ok(registros);
+            if (User.IsInRole("Montador"))
+            {
+                var idMontador = int.Parse(
+                    User.FindFirstValue(ClaimTypes.NameIdentifier)!
+                );
+
+                registros = registros.Where(
+                    r => r.Instalacao.IdMontador == idMontador
+                );
+            }
+
+            var resultado = await registros.ToListAsync();
+
+            return Ok(resultado);
         }
 
         [HttpGet("{id}")]
+        [Authorize(Roles = "ADM,Montador")]
         public async Task<ActionResult<RegistroInstalacao>> GetRegistro(int id)
         {
-            var registro = await _context.RegistrosInstalacao
+            var registro = _context.RegistroInstalacao
                 .Include(r => r.Instalacao)
                 .Include(r => r.Fotos)
+                .AsQueryable();
+
+            if (User.IsInRole("Montador"))
+            {
+                var idMontador = int.Parse(
+                    User.FindFirstValue(ClaimTypes.NameIdentifier)!
+                );
+
+                registro = registro.Where(
+                    r => r.Instalacao.IdMontador == idMontador
+                );
+            }
+
+            var resultado = await registro
                 .FirstOrDefaultAsync(r => r.Id == id);
 
-            if (registro == null)
+            if (resultado == null)
             {
                 return NotFound("Registro de instalação não encontrado.");
             }
 
-            return Ok(registro);
+            return Ok(resultado);
         }
 
         [HttpPost]
-        public async Task<ActionResult<RegistroInstalacao>> PostRegistro(RegistroInstalacao registro)
+        [Authorize(Roles = "ADM,Montador")]
+        public async Task<ActionResult<RegistroInstalacao>> PostRegistro(
+            RegistroInstalacaoDTO registroDTO)
         {
-            _context.RegistrosInstalacao.Add(registro);
+            var instalacao = await _context.Instalacao
+                .FirstOrDefaultAsync(i => i.Id == registroDTO.IdInstalacao);
+
+            if (instalacao == null)
+            {
+                return BadRequest("Instalação não encontrada.");
+            }
+
+            if (User.IsInRole("Montador"))
+            {
+                var idMontador = int.Parse(
+                    User.FindFirstValue(ClaimTypes.NameIdentifier)!
+                );
+
+                if (instalacao.IdMontador != idMontador)
+                {
+                    return Forbid();
+                }
+            }
+
+            var registro = new RegistroInstalacao
+            {
+                IdInstalacao = registroDTO.IdInstalacao,
+                TipoProblema = registroDTO.TipoProblema,
+                ObservacoesGerais = registroDTO.ObsGerais,
+                DescricaoProblema = registroDTO.DescricaoProblema,
+                DataRegistro = DateTime.Now
+            };
+
+            _context.RegistroInstalacao.Add(registro);
 
             await _context.SaveChangesAsync();
 
@@ -57,37 +122,11 @@ namespace S.A_Esquadrias.Controllers
             );
         }
 
-        [HttpPut("{id}")]
-        public async Task<IActionResult> PutRegistro(int id, RegistroInstalacao registro)
-        {
-            if (id != registro.Id)
-            {
-                return BadRequest("ID inválido.");
-            }
-
-            var registroExistente = await _context.RegistrosInstalacao
-                .FindAsync(id);
-
-            if (registroExistente == null)
-            {
-                return NotFound("Registro de instalação não encontrado.");
-            }
-
-            registroExistente.IdInstalacao = registro.IdInstalacao;
-            registroExistente.TipoProblema = registro.TipoProblema;
-            registroExistente.ObservacoesGerais = registro.ObservacoesGerais;
-            registroExistente.DescricaoProblema = registro.DescricaoProblema;
-            registroExistente.DataRegistro = registro.DataRegistro;
-
-            await _context.SaveChangesAsync();
-
-            return NoContent();
-        }
-
         [HttpDelete("{id}")]
+        [Authorize(Roles = "ADM")]
         public async Task<IActionResult> DeleteRegistro(int id)
         {
-            var registro = await _context.RegistrosInstalacao
+            var registro = await _context.RegistroInstalacao
                 .FindAsync(id);
 
             if (registro == null)
@@ -95,7 +134,7 @@ namespace S.A_Esquadrias.Controllers
                 return NotFound("Registro de instalação não encontrado.");
             }
 
-            _context.RegistrosInstalacao.Remove(registro);
+            _context.RegistroInstalacao.Remove(registro);
 
             await _context.SaveChangesAsync();
 

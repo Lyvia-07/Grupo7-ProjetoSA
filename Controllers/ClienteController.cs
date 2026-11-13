@@ -1,10 +1,14 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Authorization;
 using S.A_Esquadrias.Data;
 using S.A_Esquadrias.Models;
+using S.A_Esquadrias.DTOs;
 
 namespace S.A_Esquadrias.Controllers
 {
+    [Authorize]
     [ApiController]
     [Route("api/[controller]")]
     public class ClienteController : ControllerBase
@@ -16,8 +20,8 @@ namespace S.A_Esquadrias.Controllers
             _context = context;
         }
 
-       
         [HttpGet]
+        [Authorize(Roles = "ADM,Vendedor")]
         public async Task<ActionResult<IEnumerable<Cliente>>> GetClientes()
         {
             var clientes = await _context.Cliente
@@ -28,6 +32,7 @@ namespace S.A_Esquadrias.Controllers
         }
 
         [HttpGet("{id}")]
+        [Authorize(Roles = "ADM,Vendedor")]
         public async Task<ActionResult<Cliente>> GetCliente(int id)
         {
             var cliente = await _context.Cliente
@@ -43,8 +48,17 @@ namespace S.A_Esquadrias.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult<Cliente>> PostCliente(Cliente cliente)
+        [Authorize(Roles = "ADM,Vendedor")]
+        public async Task<ActionResult<Cliente>> PostCliente(ClienteDTO clienteDTO)
         {
+            var cliente = new Cliente
+            {
+                Nome = clienteDTO.Nome,
+                Email = clienteDTO.Email,
+                Telefone = clienteDTO.Telefone,
+                Cep = clienteDTO.Cep
+            };
+
             _context.Cliente.Add(cliente);
 
             await _context.SaveChangesAsync();
@@ -57,37 +71,31 @@ namespace S.A_Esquadrias.Controllers
         }
 
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutCliente(int id, Cliente cliente)
+        [Authorize(Roles = "ADM,Vendedor")]
+        public async Task<IActionResult> PutCliente(int id, ClienteDTO clienteDTO)
         {
-            if (id != cliente.Id)
-            {
-                return BadRequest("ID inválido.");
-            }
-
-            var clienteExistente = await _context.Cliente
-                .FindAsync(id);
+            var clienteExistente = await _context.Cliente.FindAsync(id);
 
             if (clienteExistente == null)
             {
                 return NotFound("Cliente não encontrado.");
             }
 
-            clienteExistente.Nome = cliente.Nome;
-            clienteExistente.Email = cliente.Email;
-            clienteExistente.Telefone = cliente.Telefone;
-            clienteExistente.Cep = cliente.Cep;
+            clienteExistente.Nome = clienteDTO.Nome;
+            clienteExistente.Email = clienteDTO.Email;
+            clienteExistente.Telefone = clienteDTO.Telefone;
+            clienteExistente.Cep = clienteDTO.Cep;
 
             await _context.SaveChangesAsync();
 
             return NoContent();
         }
 
-
         [HttpDelete("{id}")]
+        [Authorize(Roles = "ADM")]
         public async Task<IActionResult> DeleteCliente(int id)
         {
-            var cliente = await _context.Cliente
-                .FindAsync(id);
+            var cliente = await _context.Cliente.FindAsync(id);
 
             if (cliente == null)
             {

@@ -1,4 +1,6 @@
-﻿namespace S.A_Esquadrias.Models
+﻿using System.Text.Json.Serialization;
+
+namespace S.A_Esquadrias.Models
 {
     public class RegistroInstalacao
     {
@@ -9,6 +11,7 @@
         public string? DescricaoProblema { get; set; }
         public DateTime DataRegistro { get; set; } = DateTime.Now;
 
+        [JsonIgnore]
         public Instalacao Instalacao { get; set; }
 
         public ICollection<FotoInstalacao> Fotos { get; set; }

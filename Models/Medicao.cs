@@ -1,4 +1,6 @@
-﻿namespace S.A_Esquadrias.Models
+﻿using System.Text.Json.Serialization;
+
+namespace S.A_Esquadrias.Models
 {
     public class Medicao
     {
@@ -14,7 +16,10 @@
         public decimal AlturaNominal { get; set; }
         public string? ObsTecnicas { get; set; }
 
+        [JsonIgnore]
         public Obra Obra { get; set; }
+
+        [JsonIgnore]
         public Usuario Vendedor { get; set; }
     }
 }

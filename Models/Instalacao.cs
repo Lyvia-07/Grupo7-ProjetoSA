@@ -1,4 +1,6 @@
-﻿namespace S.A_Esquadrias.Models
+﻿using System.Text.Json.Serialization;
+
+namespace S.A_Esquadrias.Models
 {
     public class Instalacao
     {
@@ -8,7 +10,10 @@
         public DateTime DataInicio { get; set; }
         public DateTime DataTermino { get; set; }
 
+        [JsonIgnore]
         public Obra Obra { get; set; }
+
+        [JsonIgnore]
         public Usuario Montador { get; set; }
 
         public ICollection<RegistroInstalacao> Registros { get; set; }
