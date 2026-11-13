@@ -56,3 +56,5 @@ CodeCoverage/
 TestResult.xml
 nunit-*.xml
 /.vs/S.A_Esquadrias.slnx/FileContentIndex/2033d8ae-d1a8-4200-838f-c75732310186.vsidx
+/.vs/S.A_Esquadrias.slnx/FileContentIndex/45bbffdb-1519-4066-b98d-b012a4ab6d41.vsidx
+*.vsidx
