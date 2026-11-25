@@ -69,12 +69,9 @@ namespace S.A_Esquadrias.Migrations
                     b.Property<int>("IdRegistro")
                         .HasColumnType("int");
 
-                    b.Property<int>("RegistroInstalacaoId")
-                        .HasColumnType("int");
-
                     b.HasKey("Id");
 
-                    b.HasIndex("RegistroInstalacaoId");
+                    b.HasIndex("IdRegistro");
 
                     b.ToTable("FotoInstalacao");
                 });
@@ -99,17 +96,11 @@ namespace S.A_Esquadrias.Migrations
                     b.Property<int>("IdObra")
                         .HasColumnType("int");
 
-                    b.Property<int>("MontadorId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("ObraId")
-                        .HasColumnType("int");
-
                     b.HasKey("Id");
 
-                    b.HasIndex("MontadorId");
+                    b.HasIndex("IdMontador");
 
-                    b.HasIndex("ObraId");
+                    b.HasIndex("IdObra");
 
                     b.ToTable("Instalacao");
                 });
@@ -141,9 +132,6 @@ namespace S.A_Esquadrias.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("ObraId")
-                        .HasColumnType("int");
-
                     b.Property<string>("ObsTecnicas")
                         .HasColumnType("nvarchar(max)");
 
@@ -155,14 +143,11 @@ namespace S.A_Esquadrias.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("VendedorId")
-                        .HasColumnType("int");
-
                     b.HasKey("Id");
 
-                    b.HasIndex("ObraId");
+                    b.HasIndex("IdObra");
 
-                    b.HasIndex("VendedorId");
+                    b.HasIndex("IdVendedor");
 
                     b.ToTable("Medicao");
                 });
@@ -174,9 +159,6 @@ namespace S.A_Esquadrias.Migrations
                         .HasColumnType("int");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<int>("ClienteId")
-                        .HasColumnType("int");
 
                     b.Property<string>("Endereco")
                         .IsRequired()
@@ -199,14 +181,11 @@ namespace S.A_Esquadrias.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("VendedorId")
-                        .HasColumnType("int");
-
                     b.HasKey("Id");
 
-                    b.HasIndex("ClienteId");
+                    b.HasIndex("IdCliente");
 
-                    b.HasIndex("VendedorId");
+                    b.HasIndex("IdVendedor");
 
                     b.ToTable("Obra");
                 });
@@ -228,9 +207,6 @@ namespace S.A_Esquadrias.Migrations
                     b.Property<int>("IdInstalacao")
                         .HasColumnType("int");
 
-                    b.Property<int>("InstalacaoId")
-                        .HasColumnType("int");
-
                     b.Property<string>("ObservacoesGerais")
                         .HasColumnType("nvarchar(max)");
 
@@ -240,7 +216,7 @@ namespace S.A_Esquadrias.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("InstalacaoId");
+                    b.HasIndex("IdInstalacao");
 
                     b.ToTable("RegistroInstalacao");
                 });
@@ -274,8 +250,8 @@ namespace S.A_Esquadrias.Migrations
                 {
                     b.HasOne("S.A_Esquadrias.Models.RegistroInstalacao", "RegistroInstalacao")
                         .WithMany("Fotos")
-                        .HasForeignKey("RegistroInstalacaoId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .HasForeignKey("IdRegistro")
+                        .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
                     b.Navigation("RegistroInstalacao");
@@ -285,14 +261,14 @@ namespace S.A_Esquadrias.Migrations
                 {
                     b.HasOne("S.A_Esquadrias.Models.Usuario", "Montador")
                         .WithMany()
-                        .HasForeignKey("MontadorId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .HasForeignKey("IdMontador")
+                        .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
                     b.HasOne("S.A_Esquadrias.Models.Obra", "Obra")
                         .WithMany("Instalacoes")
-                        .HasForeignKey("ObraId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .HasForeignKey("IdObra")
+                        .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
                     b.Navigation("Montador");
@@ -304,13 +280,13 @@ namespace S.A_Esquadrias.Migrations
                 {
                     b.HasOne("S.A_Esquadrias.Models.Obra", "Obra")
                         .WithMany("Medicoes")
-                        .HasForeignKey("ObraId")
+                        .HasForeignKey("IdObra")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("S.A_Esquadrias.Models.Usuario", "Vendedor")
                         .WithMany()
-                        .HasForeignKey("VendedorId")
+                        .HasForeignKey("IdVendedor")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -323,13 +299,13 @@ namespace S.A_Esquadrias.Migrations
                 {
                     b.HasOne("S.A_Esquadrias.Models.Cliente", "Cliente")
                         .WithMany("Obras")
-                        .HasForeignKey("ClienteId")
+                        .HasForeignKey("IdCliente")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("S.A_Esquadrias.Models.Usuario", "Vendedor")
                         .WithMany()
-                        .HasForeignKey("VendedorId")
+                        .HasForeignKey("IdVendedor")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -342,8 +318,8 @@ namespace S.A_Esquadrias.Migrations
                 {
                     b.HasOne("S.A_Esquadrias.Models.Instalacao", "Instalacao")
                         .WithMany("Registros")
-                        .HasForeignKey("InstalacaoId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .HasForeignKey("IdInstalacao")
+                        .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
                     b.Navigation("Instalacao");
