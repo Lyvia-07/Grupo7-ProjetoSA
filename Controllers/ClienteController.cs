@@ -56,7 +56,13 @@ namespace S.A_Esquadrias.Controllers
                 Nome = clienteDTO.Nome,
                 Email = clienteDTO.Email,
                 Telefone = clienteDTO.Telefone,
-                Cep = clienteDTO.Cep
+                Cep = clienteDTO.Cep,
+                Logradouro = clienteDTO.Logradouro,
+                Numero = clienteDTO.Numero,
+                Complemento = clienteDTO.Complemento,
+                Bairro = clienteDTO.Bairro,
+                Cidade = clienteDTO.Cidade,
+                Estado = clienteDTO.Estado
             };
 
             _context.Cliente.Add(cliente);
@@ -85,6 +91,12 @@ namespace S.A_Esquadrias.Controllers
             clienteExistente.Email = clienteDTO.Email;
             clienteExistente.Telefone = clienteDTO.Telefone;
             clienteExistente.Cep = clienteDTO.Cep;
+            clienteExistente.Logradouro = clienteDTO.Logradouro;
+            clienteExistente.Numero = clienteDTO.Numero;
+            clienteExistente.Complemento = clienteDTO.Complemento;
+            clienteExistente.Bairro = clienteDTO.Bairro;
+            clienteExistente.Cidade = clienteDTO.Cidade;
+            clienteExistente.Estado = clienteDTO.Estado;
 
             await _context.SaveChangesAsync();
 
