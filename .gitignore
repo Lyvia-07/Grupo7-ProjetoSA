@@ -361,3 +361,6 @@ MigrationBackup/
 
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
+/.vs/S.A_Esquadrias.slnx/v18/.suo
+/.vs/S.A_Esquadrias.slnx/v18/DocumentLayout.backup.json
+/.vs/S.A_Esquadrias.slnx/v18/DocumentLayout.json
