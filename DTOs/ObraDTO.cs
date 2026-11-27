@@ -1,4 +1,5 @@
-﻿namespace S.A_Esquadrias.DTOs
+﻿
+namespace S.A_Esquadrias.DTOs
 {
     public class ObraDTO
     {
@@ -8,5 +9,6 @@
         public string StatusObra { get; set; }
         public string Endereco { get; set; }
         public string? ObsGerais { get; set; }
+        public decimal ValorObra { get; set; }
     }
 }

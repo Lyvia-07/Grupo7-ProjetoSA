@@ -1,4 +1,5 @@
-﻿using System.Text.Json.Serialization;
+﻿
+using System.Text.Json.Serialization;
 
 namespace S.A_Esquadrias.Models
 {
@@ -11,6 +12,7 @@ namespace S.A_Esquadrias.Models
         public string StatusObra { get; set; }
         public string Endereco { get; set; }
         public string? ObsGerais { get; set; }
+        public decimal ValorObra { get; set; }
 
         [JsonIgnore]
         public Cliente Cliente { get; set; }
