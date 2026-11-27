@@ -177,13 +177,31 @@ namespace S.A_Esquadrias.Controllers
         [Authorize(Roles = "ADM")]
         public async Task<IActionResult> DeleteObra(int id)
         {
-            var obra = await _context.Obra.FindAsync(id);
+            var obra = await _context.Obra
+                .Include(o => o.Medicoes)
+                .Include(o => o.Instalacoes)
+                    .ThenInclude(i => i.Registros)
+                        .ThenInclude(r => r.Fotos)
+                .FirstOrDefaultAsync(o => o.Id == id);
 
             if (obra == null)
             {
                 return NotFound("Obra não encontrada.");
             }
 
+            var fotos = obra.Instalacoes
+                .SelectMany(i => i.Registros)
+                .SelectMany(r => r.Fotos)
+                .ToList();
+
+            var registros = obra.Instalacoes
+                .SelectMany(i => i.Registros)
+                .ToList();
+
+            _context.RemoveRange(fotos);
+            _context.RemoveRange(registros);
+            _context.RemoveRange(obra.Instalacoes);
+            _context.RemoveRange(obra.Medicoes);
             _context.Obra.Remove(obra);
 
             await _context.SaveChangesAsync();
